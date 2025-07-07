@@ -3,7 +3,7 @@ public class HolaMundo {
 
 	public static void main(String[] args) {
 
-		System.out.println("HolaMundo");
+		System.out.println("HolaMundo ffffff");
 		 //Declarar variable
 		//Indico el tipo y el nombre de la variable(notacion camelCase)
 		int numero;
