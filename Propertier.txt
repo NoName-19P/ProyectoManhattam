@@ -1,1 +1,5 @@
+<<<<<<< master
 HolaMundo3
+=======
+Hola MundoCambio3
+>>>>>>> 5a2f010 Revert "cambio2"
