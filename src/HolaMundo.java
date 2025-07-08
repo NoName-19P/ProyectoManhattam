@@ -3,7 +3,7 @@ public class HolaMundo {
 
 	public static void main(String[] args) {
 
-		System.out.println("abc");
+		System.out.println("abcdef");
 		 //Declarar variable
 		//Indico el tipo y el nombre de la variable(notacion camelCase)
 		int numero;
@@ -14,6 +14,8 @@ public class HolaMundo {
 		System.out.println(numero+edad);
 		System.out.println("10"+numero+edad);// concatena todo porque se pone un string delante, necesitas parentesi para dar prioridad
 		System.out.println("resultado: "+(numero+edad));
+
+		System.out.println("123");
 		
 	}
 
