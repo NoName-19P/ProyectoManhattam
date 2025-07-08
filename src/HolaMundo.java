@@ -4,6 +4,7 @@ public class HolaMundo {
 	public static void main(String[] args) {
 
 		System.out.println("abc");
+		System.out.println("Test");
 		 //Declarar variable
 		//Indico el tipo y el nombre de la variable(notacion camelCase)
 		int numero;
