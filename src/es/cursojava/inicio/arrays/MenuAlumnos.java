@@ -27,6 +27,7 @@ public class MenuAlumnos {
 		int opcion = 0;
 		String[][] alumnos = new String[2][2];
 		Scanner sc = new Scanner(System.in);
+
 		do {
 
 			System.out.println("Menu Clase");
@@ -41,7 +42,7 @@ public class MenuAlumnos {
 			switch (opcion) {
 
 			case 1:
-
+				boolean hayhueco = false;
 				for (int i = 0; i < alumnos.length; i++) {
 					for (int j = 0; j < alumnos[i].length; j++) {
 						if (alumnos[i][j] == null) {
@@ -49,13 +50,14 @@ public class MenuAlumnos {
 									+ " en el puesto " + j);
 							String nombre = sc.next();
 							alumnos[i][j] = nombre;
-
-						} else {
-							System.out.println("El aula " + i + " y el puesto " + j + " esta ocupado");
+							hayhueco = true;
 						}
 
 					}
 
+				}
+				if (!hayhueco) {
+					System.out.println("No hay puestos");
 				}
 
 //				
@@ -80,7 +82,7 @@ public class MenuAlumnos {
 				break;
 
 			case 3:
-
+				boolean existe = false;
 				System.out.println("Introduce el nombre del alumno q quieress buscar");
 				String buscar = sc.next();
 				for (int i = 0; i < alumnos.length; i++) {
@@ -88,15 +90,20 @@ public class MenuAlumnos {
 						if (alumnos[i][j].contains(buscar)) {
 							System.out.println("El alumno " + alumnos[i][j] + " se encuentra en el aula " + i
 									+ " y en el puesto " + j);
+							existe = true;
 
 						}
 					}
 
 				}
+				if (!existe) {
+					System.out.println("No existe el alumno");
+				}
 
 				break;
 
 			case 4:
+				boolean existe2 = false;
 				System.out.println("Introduce el nombre del alumno q quieres eliminar");
 				String nombre_borrar = sc.next();
 
@@ -105,9 +112,14 @@ public class MenuAlumnos {
 						if (alumnos[i][j].equalsIgnoreCase(nombre_borrar)) {
 							alumnos[i][j] = null;
 							System.out.println("Alumno eliminado correctamente");
+							existe2 = true;
 
 						}
 					}
+				}
+
+				if (!existe2) {
+					System.out.println("No existe el alumno q quieres eliminar");
 				}
 				break;
 
