@@ -17,5 +17,14 @@ public class Ejercicio6 {
 		
 
 	}
+	
+	
+	public static void frase_ale(String[]cadena) {
+		
+		for(int i=0;i<cadena.length;i++) {
+			
+		}
+		
+	}
 
 }
