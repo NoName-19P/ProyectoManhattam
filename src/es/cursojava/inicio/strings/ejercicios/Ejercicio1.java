@@ -26,7 +26,6 @@ public class Ejercicio1 {
 		sb.append("estas?");
 		System.out.println(sb);//en un objeto guardas todo
 		String cadena3 = sb.toString();
-		
 		System.out.println(sb.reverse());
 	}
 

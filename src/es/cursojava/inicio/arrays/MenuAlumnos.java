@@ -87,7 +87,7 @@ public class MenuAlumnos {
 				String buscar = sc.next();
 				for (int i = 0; i < alumnos.length; i++) {
 					for (int j = 0; j < alumnos[i].length; j++) {
-						if (alumnos[i][j].contains(buscar)) {
+						if (alumnos[i][j].contains(buscar)&&alumnos[i][j]!=null) {
 							System.out.println("El alumno " + alumnos[i][j] + " se encuentra en el aula " + i
 									+ " y en el puesto " + j);
 							existe = true;
@@ -109,7 +109,7 @@ public class MenuAlumnos {
 
 				for (int i = 0; i < alumnos.length; i++) {
 					for (int j = 0; j < alumnos[i].length; j++) {
-						if (alumnos[i][j].equalsIgnoreCase(nombre_borrar)) {
+						if (nombre_borrar.equals(alumnos[i][j])) {
 							alumnos[i][j] = null;
 							System.out.println("Alumno eliminado correctamente");
 							existe2 = true;
