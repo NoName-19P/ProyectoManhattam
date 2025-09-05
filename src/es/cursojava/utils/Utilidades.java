@@ -39,10 +39,12 @@ public class Utilidades {
 
 	public static String pide_dato_cadena(String texto) {
 
-		System.out.println("Introduce una cadena");
-		texto = entrada.next();
-		return texto;
-
+		String dato="";
+		System.out.println(texto);
+		Scanner scan = new Scanner(System.in);
+		dato = scan.nextLine();
+		
+		return dato;
 	}
 
 	public static void pintar_tablero() {

@@ -22,6 +22,15 @@ public class HolaMundo {
 
 		System.out.println("123");
 		
+		//statico   nombre clase.valor
+		//no statico  crear objeto   Clase s =new clase();      s.metodo de otra claseeee
+		
+		//si ambos metodos estan en el mismo objeto, lo puedes llamar sin crear un objeto , contanto q no sean staticos o sea dinamicos.
+		
+		
+		
+		
+		
 	}
 
 }
