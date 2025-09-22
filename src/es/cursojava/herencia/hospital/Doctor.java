@@ -32,7 +32,7 @@ public class Doctor extends EmpleadosHospital{
 		
 		if(num>=8) {
 			
-			Enfermo enfermo=new Enfermo("muerte",123,"covid");
+			Enfermo enfermo=new Enfermo(paciente.getNombre(),paciente.getEdad(),"dfsddsf");
 			System.out.println("El paciente esta enfermo");
 			return enfermo;
 				
