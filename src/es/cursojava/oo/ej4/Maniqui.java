@@ -89,10 +89,7 @@ public class Maniqui {
 		
 	}
 
-	@Override
-	public String toString() {
-		return "Maniqui [id=" + id + ", pantalon=" + pantalon + ", camisa=" + camisa + ", vestido=" + vestido + "]";
-	}
+	
 	
 	
 	
