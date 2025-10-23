@@ -1,11 +1,12 @@
 package es.cursojava.oo;
 
 import java.util.Arrays;
+import java.util.List;
 
-public class Alumno {
+public class Alumno  {
 	private String nombre;
 	private String dni;
-	private int notaMedia;
+	private double notaMedia;
 	private String[] asignaturas;
 	
 	
@@ -19,12 +20,22 @@ public class Alumno {
 	
 	
 	
-	public Alumno(String nombre, String dni, int notaMedia,String[] asignaturas) {
+	public Alumno(String nombre, String dni, double notaMedia,String[] asignaturas) {
 		
 		this.nombre = nombre;
 		this.dni = dni;
 		this.notaMedia = notaMedia;
 		this.asignaturas=asignaturas;
+		
+	}
+	
+
+	public Alumno(String nombre, String dni, double notaMedia) {
+		
+		this.nombre = nombre;
+		this.dni = dni;
+		this.notaMedia = notaMedia;
+		
 		
 	}
 
@@ -42,7 +53,7 @@ public class Alumno {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public int getNota_media() {
+	public double getNota_media() {
 		return notaMedia;
 	}
 	public void setNota_media(int nota_media) {
@@ -61,6 +72,14 @@ public class Alumno {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Alumno [nombre=" + nombre + ", dni=" + dni + ", notaMedia=" + notaMedia + ", asignaturas="
+				+ Arrays.toString(asignaturas) + "]";
+	}
+
+
+
 	public void estudiar() {
 		
 		

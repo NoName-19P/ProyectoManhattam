@@ -10,6 +10,9 @@ public class Doctor extends EmpleadosHospital{
 			devolver un objeto Enfermo 
 			
 	 */
+	
+	
+
 	private String especialidad;
 
 	public Doctor(String nombre, int edad, String turno, String especialidad) {
@@ -25,14 +28,17 @@ public class Doctor extends EmpleadosHospital{
 		this.especialidad = especialidad;
 	}
 	
+	
+	
 	public Enfermo diagnosticarPaciente(Paciente paciente) {
-		
+		String[]enfermedades=UtilidadesHospital.getEnfermedades();
 		Random ale=new Random();
 		int num=ale.nextInt(10)+1;
 		
+		
 		if(num>=8) {
 			
-			Enfermo enfermo=new Enfermo(paciente.getNombre(),paciente.getEdad(),"dfsddsf");
+			Enfermo enfermo=new Enfermo(paciente.getNombre(),paciente.getEdad(),enfermedades);
 			System.out.println("El paciente esta enfermo");
 			return enfermo;
 				
@@ -40,6 +46,10 @@ public class Doctor extends EmpleadosHospital{
 		
 		System.out.println("El paciente no esta enfermo");
 		return  null;
+		
+	}
+	@Override
+	public void cobrar() {
 		
 	}
 

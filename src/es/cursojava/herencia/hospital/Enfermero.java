@@ -21,6 +21,10 @@ public class Enfermero extends EmpleadosHospital {
 	public void atenderPaciente() {
 		
 	}
+	@Override
+	public void cobrar() {
+		
+	}
 
 	@Override
 	public String toString() {
