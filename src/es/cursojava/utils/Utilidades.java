@@ -1,5 +1,6 @@
 package es.cursojava.utils;
 
+
 import java.util.Scanner;
 
 public class Utilidades {
