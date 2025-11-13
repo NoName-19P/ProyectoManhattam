@@ -1,9 +1,9 @@
 package es.cursojava.excepciones.ejercicios2.clientes.excepciones;
 
-public class TemperatureException {
+public class TemperatureException extends Exception{
 
-	public TemperatureException() {
-		super();
+	public TemperatureException(String mensaje) {
+		super(mensaje);
 	}
 	
 	
