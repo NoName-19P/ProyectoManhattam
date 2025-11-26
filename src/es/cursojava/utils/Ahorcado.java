@@ -14,28 +14,35 @@ public class Ahorcado {
 	// sujeto + verbo + complemento
 	// get 12 phrases
 
-	public static String generateRandomPhrase() {
+	//FIXME: El método se debe hacer privado
+	private static String generateRandomPhrase() {
 		return sujetos[(int) (Math.random() * 12)] + " " + verbos[(int) (Math.random() * 12)] + " "
 				+ complementos[(int) (Math.random() * 12)] + " ";
 	}
-
-	//TODO: show letters that have been introduced
+	
 	public static void hangMan() {
+		hangMan(true);
+	}
+	//TODO: show letters that have been introduced
+	public static void hangMan(boolean pintaFrase) {
 		// generar frase
 		String phrase = generateRandomPhrase();
-		System.out.println("la frase es: " + phrase);
+		if(pintaFrase) {
+			System.out.println("la frase es: " + phrase);
+		}
 		String letters = "";
 		String character = "";
 		// pedir nombre usuario
-		String userName = Utilidades.pide_dato_cadena("Ingresa tu nombre");
+		String userName = Utilidades.pideDatoCadena("Ingresa tu nombre");
 		// inicializar vidas
 		int attemps = 7;
 		System.out.println(userName + " vamos a jugar ahorcado, buena suerte!");
 		// un ciclo mientras tenga vida o encuentre la frase
+
 		while (attemps > 0) {
 			System.out.println("Tienes " + attemps + " vidas");
 			printPhraseHangMan(phrase, letters);
-			character = Utilidades.pide_dato_cadena("Ingresa una letra:");
+			character = Utilidades.pideDatoCadena("Ingresa una letra:");
 			letters = letters.concat(character);
 			if (!phrase.contains(character)) {
 				attemps--;
@@ -47,6 +54,7 @@ public class Ahorcado {
 			}
 			showLetters(letters);
 		}
+
 		if(attemps == 0) {
 			System.out.println("Que pena "+userName+", has perdido!");
 		}
@@ -82,9 +90,4 @@ public class Ahorcado {
 		}
 		System.out.println();
 	}
-	
-	
-	
-		
-
 }

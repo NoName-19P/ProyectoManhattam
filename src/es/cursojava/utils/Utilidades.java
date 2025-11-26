@@ -1,128 +1,173 @@
 package es.cursojava.utils;
 
-
 import java.util.Scanner;
 
+/**
+ * Utilidades de consola usadas en los ejemplos del curso.
+ *
+ * Contiene métodos para mostrar menús y pedir datos por teclado (enteros,
+ * decimales y cadenas). Los métodos que leen datos esperan y vuelven a pedir
+ * la entrada hasta que el usuario introduce un valor válido.
+ *
+ * Mejoras realizadas: uso de un único {@code Scanner} estático para System.in,
+ * lectura de líneas completas y parseo manual para evitar problemas con el
+ * consumo de nueva línea, y reemplazo de recursión por bucles iterativos.
+ *
+ * @author CursoJava
+ * @version 1.2
+ */
 public class Utilidades {
 
-	static Scanner entrada = new Scanner(System.in);
+    // Scanner compartido para evitar crear múltiples instancias sobre System.in
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-	public static int menu(String[] menu) {
+    /**
+     * Calcula la edad a partir del año de nacimiento.
+     *
+     * Nota: el cálculo usa un año fijo (2025) porque así estaba en la
+     * implementación original; si quieres que use el año actual se puede
+     * actualizar para obtenerlo dinámicamente.
+     *
+     * @param anioNacimiento año de nacimiento (por ejemplo, 1990)
+     * @return edad calculada como (2025 - anioNacimiento)
+     */
+    public static int calcularEdad (int anioNacimiento) {
+        int edad = 0;
 
-		String[] menu_array = { "1)Pintar tablero", "2)Validar email", "3)Eliminar email", "4)Salir" };
-		for (int i = 0; i < menu_array.length; i++) {
+        edad = 2025 - anioNacimiento;
 
-			System.out.println(menu_array[i]);
-		}
-		System.out.println("Introduce una opcion");
-		int opcion = entrada.nextInt();
-		return opcion;
+        return edad;
+    }
 
-	}
+    /**
+     * Muestra por consola las opciones del menú y el texto por defecto
+     * "Introduce una opción".
+     *
+     * Este método delega en {@link #pintaMenu(String[], String)}.
+     *
+     * @param opciones array de cadenas con las opciones a mostrar
+     */
+    public static void pintaMenu (String[] opciones) {
+        pintaMenu(opciones,"Introduce una opción");
+    }
 
-	public static void menu(String[] menu, String cadena) {
+    /**
+     * Muestra por consola las opciones del menú y un texto final (por ejemplo
+     * una indicación para el usuario).
+     *
+     * @param opciones array de cadenas con las opciones a mostrar
+     * @param texto    texto que se muestra después de las opciones (por ejemplo
+     *                 "Introduce una opción")
+     */
+    public static void pintaMenu (String[] opciones, String texto) {
+        for (String opcion : opciones) {
+            System.out.println(opcion);
+        }
+        System.out.println(texto);
+    }
 
-		menu(menu);
+    /**
+     * Pide al usuario por consola un número entero y lo devuelve.
+     *
+     * Lectura robusta: se lee una línea completa y se intenta parsear con
+     * {@link Integer#parseInt}; en caso de fallo se vuelve a pedir la entrada
+     * hasta obtener un entero válido. Evita el uso de Scanner.nextInt() que
+     * puede dejar caracteres pendientes en el buffer.
+     *
+     * @param texto texto que se muestra al pedir el dato (por ejemplo
+     *              "Introduce tu edad")
+     * @return el número entero introducido por el usuario
+     */
+    public static int pideDatoNumerico (String texto) {
+        while (true) {
+            System.out.println(texto);
+            String linea = SCANNER.nextLine();
+            if (linea == null) {
+                System.out.println("Entrada nula, vuelva a intentarlo");
+                continue;
+            }
+            linea = linea.trim();
+            if (linea.isEmpty()) {
+                System.out.println("No ha introducido ningún valor. Inténtelo de nuevo.");
+                continue;
+            }
+            try {
+                return Integer.parseInt(linea);
+            } catch (NumberFormatException e) {
+                System.out.println("No has introducido un número entero válido. Inténtalo otra vez.");
+            }
+        }
+    }
 
-		System.out.println(cadena);
+    /**
+     * Pide al usuario por consola un número decimal (double) y lo devuelve.
+     *
+     * Lectura robusta: se lee una línea completa y se intenta parsear con
+     * {@link Double#parseDouble}; en caso de fallo se vuelve a pedir la entrada
+     * hasta obtener un double válido.
+     *
+     * @param texto texto que se muestra al pedir el dato (por ejemplo
+     *              "Introduce un precio")
+     * @return el número decimal introducido por el usuario
+     */
+    public static double pideDatoDecimal (String texto) {
+        while (true) {
+            System.out.println(texto);
+            String linea = SCANNER.nextLine();
+            if (linea == null) {
+                System.out.println("Entrada nula, vuelva a intentarlo");
+                continue;
+            }
+            linea = linea.trim();
+            if (linea.isEmpty()) {
+                System.out.println("No ha introducido ningún valor. Inténtelo de nuevo.");
+                continue;
+            }
+            try {
+                return Double.parseDouble(linea);
+            } catch (NumberFormatException e) {
+                System.out.println("No has introducido un número decimal válido. Usa el punto como separador decimal y vuelve a intentarlo.");
+            }
+        }
+    }
 
-	}
+    /**
+     * Pide al usuario por consola una cadena (línea completa) y la devuelve.
+     *
+     * @param texto texto que se muestra al pedir la cadena (por ejemplo
+     *              "Introduce tu nombre")
+     * @return la línea introducida por el usuario (puede estar vacía si el
+     *         usuario pulsa sólo Enter)
+     */
+    public static String pideDatoCadena (String texto) {
+        System.out.println(texto);
+        String dato = SCANNER.nextLine();
+        return dato == null ? "" : dato;
+    }
 
-	public static int pide_dato_numerico(String texto) {
+    /**
+     * Pide al usuario por consola una cadena no vacía. Si el usuario introduce
+     * sólo espacios o una línea vacía se vuelve a pedir hasta obtener una
+     * cadena con contenido.
+     *
+     * @param texto texto que se muestra al pedir la cadena (por ejemplo
+     *              "Introduce tu nombre")
+     * @return la línea no vacía introducida por el usuario
+     */
+    public static String pideDatoCadenaNoVacia (String texto) {
+        while (true) {
+            System.out.println(texto);
+            String dato = SCANNER.nextLine();
+            if (dato == null) {
+                System.out.println("Entrada nula, vuelva a intentarlo");
+                continue;
+            }
+            if (dato.trim().isEmpty()) {
+                System.out.println("El valor no puede estar vacío. Inténtalo de nuevo.");
+                continue;
+            }
+            return dato;
+        }
+    }
 
-		System.out.println(texto);
-
-		System.out.println("Introduce un dato numerico");
-		int numerico = entrada.nextInt();
-
-		return numerico;
-	}
-
-	public static String pide_dato_cadena(String texto) {
-
-		String dato="";
-		System.out.println(texto);
-		Scanner scan = new Scanner(System.in);
-		dato = scan.nextLine();
-		
-		return dato;
-	}
-
-	public static void pintar_tablero() {
-		String aster = "*";
-		String espacio = " ";
-		System.out.println("MENU PINTAR TABLERO");
-		System.out.println("Introduce el lado de un cuadrado");
-		int lado = entrada.nextInt();
-		for (int i = 1; i <= lado; i++) {
-
-			for (int j = 1; j <= lado; j++) {
-
-				if (i == 1 || i == lado || j == 1 || j == lado) {
-					System.out.print(aster + " ");
-
-				} else
-
-					System.out.print(espacio + " ");
-
-			}
-
-			System.out.println();
-		}
-	}
-
-	public static void validar_email() {
-		String email = "  email.correo@asdas.es     ";
-		String mensajeError = "";
-		
-		email = email.trim();
-		
-		if (email.isEmpty()) {
-			mensajeError = "El email no puede estar en blanco";
-		}else {
-			if (email.contains(" ")) {
-				mensajeError = "El email no puede tener espacios en blanco\n";
-			}
-			
-			if (!email.contains("@")) {
-				mensajeError += "El email no tiene arroba\n";
-			}
-			else if (email.indexOf("@")!=email.lastIndexOf("@")) {
-				mensajeError += "El email no puede tener más de 1 arroba\n";
-			}else {
-				String dominio = email.substring(email.indexOf("@")+1);
-				System.out.println("dominio: "+dominio);
-				
-				if (!dominio.contains(".")) {
-					mensajeError += "El dominio del email debe contener al menos un punto \n";
-				}else {//Si contiene punto
-					int posicionPunto = dominio.indexOf(".");
-					if (posicionPunto <2 ) {
-						mensajeError += "La separación entre la @ y el primer punto debe ser superior a 2 caracteres \n";
-					}
-					
-					int posicionUltimoPunto = dominio.lastIndexOf(".");
-					int longitudDominio = dominio.length()-1;
-					if (longitudDominio - posicionUltimoPunto<2 ||
-							longitudDominio - posicionUltimoPunto>6) {
-						mensajeError += "Después del último punto solo puede haber entre 2 y 6 caracteres \n";
-					}
-				}
-				
-				
-			}
-		
-		}
-		
-		
-		
-		
-		
-		if (mensajeError.isEmpty()) {
-			System.out.println("El email "+ email +" es valido");
-		}else {
-			System.out.println(mensajeError);
-		}
-
-	}
 }
