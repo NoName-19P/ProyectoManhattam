@@ -18,7 +18,7 @@ public class EjercicioExcepciones {
 	
 	private static int [] crearArray () {
 		
-		int arraySize = Utilidades.pide_dato_numerico("Introduce el tamaño del array");
+		int arraySize = Utilidades.pideDatoNumerico("Introduce el tamaño del array");
 		int numeros[] = new int[arraySize];
 		
 		return numeros;
@@ -27,7 +27,7 @@ public class EjercicioExcepciones {
 	private static void rellenarArray (int numeros []) {
 		try {
 			for (int i = 0; i < numeros.length; i++) {
-				numeros[i] =Utilidades.pide_dato_numerico("Introduce número para posición "+i);
+				numeros[i] =Utilidades.pideDatoNumerico("Introduce número para posición "+i);
 			}
 		}catch(ArrayIndexOutOfBoundsException aiobe) {
 			System.out.println("Error rellenarArray" +aiobe.getMessage());
@@ -37,7 +37,7 @@ public class EjercicioExcepciones {
 	private static void muestraPosicion(int numeros []) {
 		int pos = 0;
 		try {
-			pos = Utilidades.pide_dato_numerico("Introduce posición a mostrar");
+			pos = Utilidades.pideDatoNumerico("Introduce posición a mostrar");
 			System.out.println(numeros[pos]);
 		}catch(ArrayIndexOutOfBoundsException aiobe) {
 			System.out.println("Error al obtener la posición " +pos + " " +aiobe.getMessage());

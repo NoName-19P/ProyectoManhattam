@@ -8,3 +8,5 @@ https://docs.oracle.com/error-help/db/ora-12541/
 https://docs.oracle.com/error-help/db/ora-12541/
 19:42:27.657 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1522. (CONNECTION_ID=loHiIi6xQ8ePNl2rA4kauw==)
 https://docs.oracle.com/error-help/db/ora-12541/
+16:21:31.715 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=CZNZgGQwTC+i1euAijLcWA==)
+https://docs.oracle.com/error-help/db/ora-12541/

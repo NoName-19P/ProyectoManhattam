@@ -1,5 +1,7 @@
 package es.cursojava.utils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -169,5 +171,15 @@ public class Utilidades {
             return dato;
         }
     }
+    
+    
+    public static LocalDate pideFecha(String mensaje) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(mensaje);
+        String entrada = sc.nextLine();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(entrada, formato); 
+    }
+
 
 }
